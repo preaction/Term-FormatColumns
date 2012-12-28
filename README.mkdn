@@ -1,0 +1,36 @@
+# NAME
+
+Term::FormatColumns - Format lists of data into columns across the terminal's width
+
+# SYNOPSIS
+
+    use Term::FormatColumns qw( format_list );
+    my @list = 0..1000;
+    print format_list @list;
+
+# DESCRIPTION
+
+This module will take a list and format it into columns that stretch across the
+current terminal's width, much like the output of ls(1).
+
+If the filehandle is not attached to a tty, will simply write one column of output
+(again, like ls(1)).
+
+# FUNCTIONS
+
+## format\_list
+
+Format the list of data. Returns a single string formatted and ready for output.
+
+# COPYRIGHT
+
+Copyright 2012, Doug Bell <preaction@me.com>
+
+# LICENSE
+
+This distribution is free software; you can redistribute it and/or modify it
+under the same terms as Perl 5.14.2.
+
+This program is distributed in the hope that it will be
+useful, but without any warranty; without even the implied
+warranty of merchantability or fitness for a particular purpose.
