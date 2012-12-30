@@ -1,9 +1,9 @@
 package Term::FormatColumns;
 
 use Sub::Exporter -setup => [
-    exports => [
+    exports => (
         'format_list',
-    ],
+    ),
 ];
 
 use Term::ReadKey qw( GetTerminalSize );
