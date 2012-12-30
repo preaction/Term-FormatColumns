@@ -4,9 +4,9 @@ Term::FormatColumns - Format lists of data into columns across the terminal's wi
 
 # SYNOPSIS
 
-    use Term::FormatColumns qw( format_list );
+    use Term::FormatColumns qw( format_columns );
     my @list = 0..1000;
-    print format_list @list;
+    print format_columns @list;
 
 # DESCRIPTION
 
@@ -18,9 +18,15 @@ If the filehandle is not attached to a tty, will simply write one column of outp
 
 # FUNCTIONS
 
-## format\_list
+## format\_columns
+
+    my $string = format_columns @array;
 
 Format the list of data. Returns a single string formatted and ready for output.
+
+## format\_columns\_for\_fh
+
+    my $string = format_columns_for_fh $fh, @array;
 
 # COPYRIGHT
 
