@@ -79,7 +79,7 @@ Format the list of data. Returns a single string formatted and ready for output.
 
 =head1 COPYRIGHT
 
-Copyright 2012, Doug Bell <preaction@me.com>
+Copyright 2012, Doug Bell <preaction@cpan.org>
 
 =head1 LICENSE
 
