@@ -78,11 +78,15 @@ If the filehandle is not attached to a tty, will simply write one column of outp
 
     my $string = format_columns @array;
 
-Format the list of data. Returns a single string formatted and ready for output.
+Format the list of data for STDOUT. Returns a single string formatted and ready for output.
 
 =head2 format_columns_for_fh
 
     my $string = format_columns_for_fh $fh, @array;
+    my $string = format_columns_for_fh STDOUT, @array;
+
+Format the given data for the given filehandle. If the filehandle is attached to a tty,
+will get the tty's width to determine how to format the data.
 
 =head2 format_columns_for_width
 
