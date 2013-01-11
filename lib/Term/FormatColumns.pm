@@ -40,7 +40,7 @@ sub format_columns_for_width($@) {
     }
     my $output = '';
     my $column_width = int( $term_width / $columns );
-    my $format = "\%-${column_width}s" x $columns . "\n";
+    my $format = "\%-${column_width}s" x ($columns-1) . "\%s\n";
     my $rows = ceil( @data / $columns );
     my @index = part { int( $_ / $rows ) } 0..$#data;
     my $iter = each_arrayref @index;
