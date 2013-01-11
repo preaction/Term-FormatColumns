@@ -10,13 +10,15 @@ use Term::ReadKey qw( GetTerminalSize );
 use List::Util qw( max );
 use List::MoreUtils qw( part each_arrayref );
 use POSIX qw( ceil );
+use Symbol qw(qualify_to_ref);
 
 sub format_columns(@) {
-    return format_columns_for_fh( \*STDOUT, @_ );
+    return format_columns_for_fh STDOUT, @_;
 }
 
-sub format_columns_for_fh($@) {
-    my ( $fh, @data ) = @_;
+sub format_columns_for_fh(*@) {
+    my $fh = qualify_to_ref( shift, caller );
+    my @data = @_;
  
     # If we're not attached to a terminal, one column, seperated by newlines
     if ( !-t $fh ) {
