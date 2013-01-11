@@ -36,7 +36,7 @@ sub format_columns_for_width($@) {
     my $columns = int( $term_width / $max_width );
     if ( $columns <= 1 ) {
         # Only one column, let the terminal handle things
-        return join "\n", @data;
+        return join "\n", @data, undef; # Add a \n to the end
     }
     my $output = '';
     my $column_width = int( $term_width / $columns );
