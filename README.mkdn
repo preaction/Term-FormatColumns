@@ -28,9 +28,16 @@ Format the list of data. Returns a single string formatted and ready for output.
 
     my $string = format_columns_for_fh $fh, @array;
 
+## format\_columns\_for\_width
+
+    my $string = format_columns_for_width 78, @array;
+
+Format the given data for the given width. This allows you to use this module without
+being attached to a known/knowable terminal.
+
 # COPYRIGHT
 
-Copyright 2012, Doug Bell <preaction@me.com>
+Copyright 2012, Doug Bell <preaction@cpan.org>
 
 # LICENSE
 
