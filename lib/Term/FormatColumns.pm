@@ -13,7 +13,7 @@ use POSIX qw( ceil );
 use Symbol qw(qualify_to_ref);
 
 sub format_columns(@) {
-    return format_columns_for_fh STDOUT, @_;
+    return format_columns_for_fh( STDOUT, @_ );
 }
 
 sub format_columns_for_fh(*@) {
