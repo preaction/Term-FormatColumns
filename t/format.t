@@ -38,4 +38,12 @@ bar       fizzbuzz
 baz
 OUTPUT
 
+my $bold = "\x1b[1mfizzbuzz\x1b[0m";
+$output = format_columns_for_width 20, qw/foo bar baz biz blargh/, $bold;
+is $output, <<OUTPUT, 'ANSI SGR escape sequences are handled correctly';
+foo       biz
+bar       blargh
+baz       $bold
+OUTPUT
+
 done_testing;

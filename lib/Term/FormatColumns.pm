@@ -33,7 +33,7 @@ sub format_columns_for_fh(*@) {
 
 sub format_columns_for_width($@) {
     my ( $term_width, @data ) = @_;
-    my $max_width = max map { length } @data;
+    my $max_width = max map { length s/\x1b\[[0-9;]+m//gr } @data;
     $max_width += 2; # make sure at least two spaces between data values
     my $columns = int( $term_width / $max_width );
     if ( $columns <= 1 ) {
@@ -42,13 +42,19 @@ sub format_columns_for_width($@) {
     }
     my $output = '';
     my $column_width = int( $term_width / $columns );
-    my $format = "\%-${column_width}s" x ($columns-1) . "\%s\n";
     my $rows = ceil( @data / $columns );
     push @data, ('') x ($rows * $columns - @data); # Pad data with empty strings
     my @index = part { int( $_ / $rows ) } 0..$#data;
     my $iter = each_arrayref @index;
     while ( my @row_vals = $iter->() ) {
-        $output .= sprintf $format, map { $data[$_] } @row_vals;
+        my @cells = map { $data[$_] } @row_vals;
+        my $last_cell = pop @cells;
+        for (@cells) {
+            my $length = length s/\x1b\[[0-9;]+m//gr;
+            $output .= $_;
+            $output .= ' ' x ($column_width - $length);
+        }
+        $output .= $last_cell . "\n";
     }
     return $output;
 }
