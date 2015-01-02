@@ -14,7 +14,7 @@ use List::MoreUtils qw( part each_arrayref );
 use POSIX qw( ceil );
 use Symbol qw(qualify_to_ref);
 
-sub format_columns(@) {
+sub format_columns {
     return format_columns_for_fh( \*STDOUT, @_ );
 }
 
@@ -33,7 +33,7 @@ sub format_columns_for_fh(*@) {
     return format_columns_for_width( $term_width, @data );
 }
 
-sub format_columns_for_width($@) {
+sub format_columns_for_width {
     my ( $term_width, @data ) = @_;
     my $max_width = max map { length s/\x1b\[[0-9;]+m//gr } @data;
     $max_width += 2; # make sure at least two spaces between data values
