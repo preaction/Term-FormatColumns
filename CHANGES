@@ -1,6 +1,12 @@
 Changelog for Term-FormatColumns
 
-0.006 2015-01-02T21:41:00
+0.006 2015-01-02T23:29:17
+ - remove the _ prototype to fix 5.8
+ - remove s///r to allow Perl prior to 5.14
+ - update module for Pod::Weaver docs
+ - add authordep on Pod::Weaver::Section::Contributors
+ - use updated Git::Contributors dzil plugin
+ - add contributors dzil plugin for proper attribution
  - rebuild build artifacts to trigger a travis build
  - add travis-ci for testing
  - update dist.ini to current best practices
