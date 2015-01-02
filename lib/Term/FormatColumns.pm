@@ -18,7 +18,7 @@ use Symbol qw(qualify_to_ref);
 
 # Find the length of a string as displayed on the terminal, ignoring any ANSI
 # escape sequences.
-sub _term_length(_) {
+sub _term_length {
     my ( $str ) = @_;
     $str =~ s/\x1b\[[0-9;]+m//g;
     return length $str;
@@ -72,7 +72,7 @@ being attached to a known/knowable terminal.
 
 sub format_columns_for_width {
     my ( $term_width, @data ) = @_;
-    my $max_width = max map { _term_length } @data;
+    my $max_width = max map { _term_length( $_ ) } @data;
     $max_width += 2; # make sure at least two spaces between data values
     my $columns = int( $term_width / $max_width );
     if ( $columns <= 1 ) {
@@ -89,7 +89,7 @@ sub format_columns_for_width {
         my @cells = map { $data[$_] } @row_vals;
         my $last_cell = pop @cells;
         for (@cells) {
-            my $length = _term_length;
+            my $length = _term_length( $_ );
             $output .= $_;
             $output .= ' ' x ($column_width - $length);
         }
