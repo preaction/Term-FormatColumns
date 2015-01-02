@@ -68,6 +68,10 @@ warranty of merchantability or fitness for a particular purpose.
 
 Doug Bell <preaction@cpan.org>
 
+# CONTRIBUTOR
+
+Marius Gavrilescu <marius@ieval.ro>
+
 # COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2013 by Doug Bell.

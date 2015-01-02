@@ -1,6 +1,7 @@
 Changelog for Term-FormatColumns
 
-0.006 2015-01-02T21:21:58
+0.006 2015-01-02T21:41:00
+ - rebuild build artifacts to trigger a travis build
  - add travis-ci for testing
  - update dist.ini to current best practices
  - add missing prereqs
