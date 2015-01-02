@@ -1,6 +1,8 @@
 NAME
-    Term::FormatColumns - Format lists of data into columns across the
-    terminal's width
+    Term::FormatColumns
+
+VERSION
+    version 0.006
 
 SYNOPSIS
         use Term::FormatColumns qw( format_columns );
@@ -13,6 +15,10 @@ DESCRIPTION
 
     If the filehandle is not attached to a tty, will simply write one column
     of output (again, like ls(1)).
+
+NAME
+    Term::FormatColumns - Format lists of data into columns across the
+    terminal's width
 
 FUNCTIONS
   format_columns
@@ -45,4 +51,13 @@ LICENSE
     This program is distributed in the hope that it will be useful, but
     without any warranty; without even the implied warranty of
     merchantability or fitness for a particular purpose.
+
+AUTHOR
+    Doug Bell <preaction@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Doug Bell.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
