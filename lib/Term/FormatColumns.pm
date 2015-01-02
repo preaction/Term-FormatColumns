@@ -4,7 +4,7 @@ use warnings;
 
 use Sub::Exporter -setup => [
     exports => (
-        'format_columns', 'format_columns_for_fh', 'format_columns_for_width',
+        qw/format_columns format_columns_for_fh format_columns_for_width/,
     ),
 ];
 
@@ -21,12 +21,12 @@ sub format_columns {
 sub format_columns_for_fh(*@) {
     my $fh = qualify_to_ref( shift, caller );
     my @data = @_;
- 
+
     # If we're not attached to a terminal, one column, seperated by newlines
     if ( !-t $fh ) {
         return join "\n", @data, '';
     }
- 
+
     # We're attached to a terminal, print column-wise alphabetically to fit the
     # terminal width
     my ( $term_width, undef, undef, undef ) = GetTerminalSize();
@@ -62,6 +62,7 @@ sub format_columns_for_width {
 }
 
 1;
+__END__
 
 =head1 NAME
 
