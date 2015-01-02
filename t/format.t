@@ -30,4 +30,12 @@ blargh
 fizzbuzz
 OUTPUT
 
+$output = format_columns_for_width 20, qw/foo bar baz biz fizzbuzz/;
+$output =~ s/ +$//; # Avoid git whitespace errors
+is $output, <<'OUTPUT', 'Short lists are padded with empty strings';
+foo       biz
+bar       fizzbuzz
+baz
+OUTPUT
+
 done_testing;

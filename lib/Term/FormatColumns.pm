@@ -44,6 +44,7 @@ sub format_columns_for_width($@) {
     my $column_width = int( $term_width / $columns );
     my $format = "\%-${column_width}s" x ($columns-1) . "\%s\n";
     my $rows = ceil( @data / $columns );
+    push @data, ('') x ($rows * $columns - @data); # Pad data with empty strings
     my @index = part { int( $_ / $rows ) } 0..$#data;
     my $iter = each_arrayref @index;
     while ( my @row_vals = $iter->() ) {
