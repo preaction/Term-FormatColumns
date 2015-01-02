@@ -1,4 +1,6 @@
 package Term::FormatColumns;
+# ABSTRACT: Format lists of data into columns across the terminal's width
+
 use strict;
 use warnings;
 
@@ -14,9 +16,27 @@ use List::MoreUtils qw( part each_arrayref );
 use POSIX qw( ceil );
 use Symbol qw(qualify_to_ref);
 
+=sub format_columns
+
+    my $string = format_columns @array;
+
+Format the list of data for STDOUT. Returns a single string formatted and ready for output.
+
+=cut
+
 sub format_columns {
     return format_columns_for_fh( \*STDOUT, @_ );
 }
+
+=sub format_columns_for_fh
+
+    my $string = format_columns_for_fh $fh, @array;
+    my $string = format_columns_for_fh STDOUT, @array;
+
+Format the given data for the given filehandle. If the filehandle is attached to a tty,
+will get the tty's width to determine how to format the data.
+
+=cut
 
 sub format_columns_for_fh(*@) {
     my $fh = qualify_to_ref( shift, caller );
@@ -32,6 +52,15 @@ sub format_columns_for_fh(*@) {
     my ( $term_width, undef, undef, undef ) = GetTerminalSize();
     return format_columns_for_width( $term_width, @data );
 }
+
+=sub format_columns_for_width
+
+    my $string = format_columns_for_width 78, @array;
+
+Format the given data for the given width. This allows you to use this module without
+being attached to a known/knowable terminal.
+
+=cut
 
 sub format_columns_for_width {
     my ( $term_width, @data ) = @_;
@@ -64,10 +93,6 @@ sub format_columns_for_width {
 1;
 __END__
 
-=head1 NAME
-
-Term::FormatColumns - Format lists of data into columns across the terminal's width
-
 =head1 SYNOPSIS
 
     use Term::FormatColumns qw( format_columns );
@@ -81,39 +106,3 @@ current terminal's width, much like the output of ls(1).
 
 If the filehandle is not attached to a tty, will simply write one column of output
 (again, like ls(1)).
-
-=head1 FUNCTIONS
-
-=head2 format_columns
-
-    my $string = format_columns @array;
-
-Format the list of data for STDOUT. Returns a single string formatted and ready for output.
-
-=head2 format_columns_for_fh
-
-    my $string = format_columns_for_fh $fh, @array;
-    my $string = format_columns_for_fh STDOUT, @array;
-
-Format the given data for the given filehandle. If the filehandle is attached to a tty,
-will get the tty's width to determine how to format the data.
-
-=head2 format_columns_for_width
-
-    my $string = format_columns_for_width 78, @array;
-
-Format the given data for the given width. This allows you to use this module without
-being attached to a known/knowable terminal.
-
-=head1 COPYRIGHT
-
-Copyright 2012, Doug Bell <preaction@cpan.org>
-
-=head1 LICENSE
-
-This distribution is free software; you can redistribute it and/or modify it
-under the same terms as Perl 5.14.2.
-
-This program is distributed in the hope that it will be
-useful, but without any warranty; without even the implied
-warranty of merchantability or fitness for a particular purpose.
