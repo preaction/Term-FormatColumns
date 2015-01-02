@@ -22,7 +22,7 @@ sub format_columns_for_fh(*@) {
  
     # If we're not attached to a terminal, one column, seperated by newlines
     if ( !-t $fh ) {
-        return join "\n", @data;
+        return join "\n", @data, '';
     }
  
     # We're attached to a terminal, print column-wise alphabetically to fit the
