@@ -1,4 +1,6 @@
 package Term::FormatColumns;
+use strict;
+use warnings;
 
 use Sub::Exporter -setup => [
     exports => (
@@ -13,7 +15,7 @@ use POSIX qw( ceil );
 use Symbol qw(qualify_to_ref);
 
 sub format_columns(@) {
-    return format_columns_for_fh( STDOUT, @_ );
+    return format_columns_for_fh( \*STDOUT, @_ );
 }
 
 sub format_columns_for_fh(*@) {
@@ -38,7 +40,7 @@ sub format_columns_for_width($@) {
     my $columns = int( $term_width / $max_width );
     if ( $columns <= 1 ) {
         # Only one column, let the terminal handle things
-        return join "\n", @data, undef; # Add a \n to the end
+        return join "\n", @data, ''; # Add a \n to the end
     }
     my $output = '';
     my $column_width = int( $term_width / $columns );
