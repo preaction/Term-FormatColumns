@@ -12,8 +12,15 @@ on 'build' => sub {
 };
 
 on 'test' => sub {
-  requires "Test::Compile" => "0";
+  requires "File::Spec" => "0";
+  requires "IO::Handle" => "0";
+  requires "IPC::Open3" => "0";
   requires "Test::More" => "0.88";
+};
+
+on 'test' => sub {
+  recommends "CPAN::Meta" => "0";
+  recommends "CPAN::Meta::Requirements" => "2.120900";
 };
 
 on 'configure' => sub {

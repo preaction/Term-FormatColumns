@@ -20,7 +20,9 @@ my %WriteMakefileArgs = (
     "Module::Build" => "0.28"
   },
   "DISTNAME" => "Term-FormatColumns",
-  "EXE_FILES" => [],
+  "EXE_FILES" => [
+    "bin/fmtcol"
+  ],
   "LICENSE" => "perl",
   "NAME" => "Term::FormatColumns",
   "PREREQ_PM" => {
@@ -34,18 +36,23 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Test::Compile" => 0,
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.006",
+  "VERSION" => "0.007",
   "test" => {
-    "TESTS" => "t/*.t"
+    "TESTS" => "t/*.t t/bin/*.t"
   }
 );
 
 
 my %FallbackPrereqs = (
   "ExtUtils::MakeMaker" => 0,
+  "File::Spec" => 0,
+  "IO::Handle" => 0,
+  "IPC::Open3" => 0,
   "List::MoreUtils" => "0.33",
   "List::Util" => 0,
   "Module::Build" => "0.28",
@@ -53,7 +60,6 @@ my %FallbackPrereqs = (
   "Sub::Exporter" => "0.984",
   "Symbol" => 0,
   "Term::ReadKey" => "2.30",
-  "Test::Compile" => 0,
   "Test::More" => "0.88",
   "strict" => 0,
   "warnings" => 0

@@ -19,7 +19,7 @@ my %module_build_args = (
     "Doug Bell <preaction\@cpan.org>"
   ],
   "dist_name" => "Term-FormatColumns",
-  "dist_version" => "0.006",
+  "dist_version" => "0.007",
   "license" => "perl",
   "module_name" => "Term::FormatColumns",
   "recommends" => {},
@@ -34,17 +34,23 @@ my %module_build_args = (
     "strict" => 0,
     "warnings" => 0
   },
-  "script_files" => [],
+  "script_files" => [
+    "bin/fmtcol"
+  ],
   "test_requires" => {
-    "Test::Compile" => 0,
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Test::More" => "0.88"
   }
 );
 
 
 my %fallback_build_requires = (
+  "File::Spec" => 0,
+  "IO::Handle" => 0,
+  "IPC::Open3" => 0,
   "Module::Build" => "0.28",
-  "Test::Compile" => 0,
   "Test::More" => "0.88"
 );
 

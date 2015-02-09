@@ -3,7 +3,7 @@ NAME
     terminal's width
 
 VERSION
-    version 0.006
+    version 0.007
 
 SYNOPSIS
         use Term::FormatColumns qw( format_columns );
@@ -41,8 +41,11 @@ SUBROUTINES
 AUTHOR
     Doug Bell <preaction@cpan.org>
 
+CONTRIBUTOR
+    Marius Gavrilescu <marius@ieval.ro>
+
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Doug Bell.
+    This software is copyright (c) 2015 by Doug Bell.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

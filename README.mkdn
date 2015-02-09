@@ -4,11 +4,11 @@ Term::FormatColumns - Format lists of data into columns across the terminal's wi
 
 # VERSION
 
-version 0.006
+version 0.007
 
 # STATUS
 
-<a href="https://travis-ci.org/preaction/{{->name}}"><img src="https://travis-ci.org/preaction/{{->name}}.svg?branch=master"></a><a href="https://coveralls.io/r/preaction/{{->name}}"><img src="https://coveralls.io/repos/preaction/{{->name}}/badge.png" alt="Coverage Status" /></a>
+<a href="https://travis-ci.org/preaction/Term-FormatColumns"><img src="https://travis-ci.org/preaction/Term-FormatColumns.svg?branch=master"></a><a href="https://coveralls.io/r/preaction/Term-FormatColumns"><img src="https://coveralls.io/repos/preaction/Term-FormatColumns/badge.png" alt="Coverage Status" /></a>
 
 # SYNOPSIS
 
@@ -51,9 +51,13 @@ being attached to a known/knowable terminal.
 
 Doug Bell <preaction@cpan.org>
 
+# CONTRIBUTOR
+
+Marius Gavrilescu <marius@ieval.ro>
+
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Doug Bell.
+This software is copyright (c) 2015 by Doug Bell.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
