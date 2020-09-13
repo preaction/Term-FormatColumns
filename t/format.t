@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Test::More;
 use Term::FormatColumns qw(format_columns_for_width);
+use utf8;
 
 my @data = qw( foo bar baz biz blargh fizzbuzz );
 my $output;
@@ -45,5 +46,29 @@ foo       biz
 bar       blargh
 baz       $bold
 OUTPUT
+
+my @strings = ( "aa", "bb", "cc", "😄😄",
+                "dd", "ee", "ff", "😄😄",
+                "gg", "hh", "ii", "😄😄",
+                "jj", "kk", "ll", "😄😄",
+              );
+$output = format_columns_for_width 40, @strings;
+is $output, <<OUTPUT, 'wide emoji handled correctly';
+aa    😄😄  ff    hh    jj    😄😄
+bb    dd    😄😄  ii    kk    
+cc    ee    gg    😄😄  ll    
+OUTPUT
+
+@strings = (
+                "allow", "bilbo",
+                "こんにちは",
+                "frodo", "snack", "fruit",
+           );
+$output = format_columns_for_width 40, @strings;
+is $output, <<OUTPUT, 'hiragana (wide chars) handled correctly';
+allow        こんにちは   snack
+bilbo        frodo        fruit
+OUTPUT
+
 
 done_testing;
